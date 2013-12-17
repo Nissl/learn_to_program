@@ -1,0 +1,1 @@
+foods = [] # now you know exactly where you stopped, and you can play with clone at home.
