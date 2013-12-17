@@ -4,7 +4,7 @@ puts "Enter words you would like the turk to sort. Press enter on a blank line"
 puts "when finished."
 
 while true
-  input = gets.chomp
+  input = gets.chomp.downcase
   if input.length == 0
     break
   else
@@ -16,6 +16,3 @@ item_list.sort!
 
 puts "Here\'s the sorted list! Magnificent!"
 puts [item_list]
-# while item_list.length > 0
-#   puts item_list.pop
-# end
