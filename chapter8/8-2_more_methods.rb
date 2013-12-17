@@ -1,1 +1,16 @@
-foods = [] # now you know exactly where you stopped, and you can play with clone at home.
+foods = ['burritos', 'stir fry', 'salad']
+
+puts foods
+puts
+puts foods.to_s
+puts
+puts foods.join(', ')
+puts
+puts foods.join(' :) ') + ' 8)'
+
+200.times do
+  puts []
+end
+
+puts
+puts [foods]
