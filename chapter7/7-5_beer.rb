@@ -10,6 +10,7 @@ while bottles > 2
 end
 
 # need to pull out the last two to make the plural nouns work right.
+# note that this bug fix was originally pushed with my chapter 10 update, but not noted
 puts (bottles.to_s + " bottles of beer on the wall, "  + 
          bottles.to_s + " bottles of beer! ")
 bottles -= 1

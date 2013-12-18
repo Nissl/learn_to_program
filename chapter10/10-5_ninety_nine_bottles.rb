@@ -90,7 +90,7 @@ def drink_bottle bottle_num
   return bottle_num
 end
 
-bottle_num = 9999
+bottle_num = 99
 while bottle_num > 2
   bottle_num = drink_bottle(bottle_num)
 end
