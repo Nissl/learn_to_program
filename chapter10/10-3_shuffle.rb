@@ -1,6 +1,6 @@
 # I am defining a good shuffle as one in which the order of words is 
 # determined purely randomly. This may occasionally result in a list returning
-# the same, particularly if short.
+# the same as input ordering, particularly if it's very short.
 
 # Shuffling was tested via the following code:
 #
@@ -51,9 +51,12 @@ def recursive_shuffle word_list, shuffled_list
 end
 
 
-# puts "Come one, come all, see the amazing John\'s shuffling program!"
-# puts "Now with a manually coded algorithm!"
-# puts "Enter words you would like the program to shuffle. Press enter on a blank line"
-# puts "when finished."
+puts "Come one, come all, see the amazing John\'s shuffling program!"
+puts "Enter words you would like the program to shuffle. Press enter on a blank line"
+puts "when finished."
 
-# word_list = make_list
+word_list = make_list
+shuffled_list = shuffle word_list
+
+puts "Here\'s the shuffled list!"
+puts [shuffled_list]
