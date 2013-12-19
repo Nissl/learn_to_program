@@ -26,7 +26,7 @@ pusher_music = Dir['C:/Music Library/Squarepusher/Ultravisitor/*.mp3']
 music_list = tobin_music + pusher_music
 shuffled_music = shuffle music_list
 
-save_loc = 'C:/tealeaf/playlist'
+save_loc = 'C:/tealeaf/data_files'
 filename = 'playlist.m3u'
 
 Dir.chdir save_loc

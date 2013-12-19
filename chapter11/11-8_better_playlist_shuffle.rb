@@ -92,8 +92,11 @@ end
 music_list, music_lib_path, min_alb_length = make_list
 shuffled_music = shuffle music_list, music_lib_path, min_alb_length
 
-save_loc = 'C:/tealeaf/playlist'
-filename = 'playlist.m3u'
+
+puts 'Now please enter the path where you would like the playlist saved.'
+save_loc = gets.chomp
+puts 'Now please enter the filename (.m3u is the standard format).'
+filename = gets.chomp
 
 Dir.chdir save_loc
 
