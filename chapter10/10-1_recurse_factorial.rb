@@ -1,9 +1,7 @@
 def factorial(n)
   if n < 0
     return 'You can\'t take the factorial of a negative number!'
-  elsif n == 0
-    return 0
-  elsif n == 1
+  elsif n <= 1
     return 1
   else
     return n * factorial(n - 1)
