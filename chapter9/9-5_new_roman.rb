@@ -35,6 +35,6 @@ end
 
 
 
-puts "Input number to be converted to old Roman numerals"
+puts "Input number to be converted to Roman numerals"
 roman = convert(gets.chomp.to_i, '')
 puts "Converted result: " + roman

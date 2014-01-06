@@ -1,5 +1,5 @@
 def square x
-  puts(x ** 2)
+  puts(x**2)
 end
 
 x = 5
