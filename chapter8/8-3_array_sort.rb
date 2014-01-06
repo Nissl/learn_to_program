@@ -8,7 +8,7 @@ while true
   if input.length == 0
     break
   else
-    item_list.push(input)
+    item_list. << input
   end
 end
 
