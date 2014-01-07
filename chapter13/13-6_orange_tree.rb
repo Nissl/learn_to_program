@@ -12,7 +12,7 @@ class OrangeTree
     if @age > 3
       @orange_num = (@height * (rand + 2)).to_i
     end
-    if (@age * rand) > 15
+    if (@age * rand) > 30
       puts "Your tree died at age #{@age}. What a super fun game, let\'s play again!"
       exit
     end
@@ -30,24 +30,22 @@ class OrangeTree
   def pick_an_orange
     if @orange_num > 0
       @orange_num -= 1
-      puts ("You pick an orange and burrow your rodent-like little mouth into 
-            it, searching desperately for happiness in your food.
-            The succulent, juicy fruit provides a temporary respite from your 
-            existential despair as it dribbles down your chin.")
+      puts "You eat a delicious orange, acheiving a temporary escape."
     else
-      puts ("Your tree is out of oranges this year. Sadness!")
+      puts "You go to eat an orange, but none are left this year. Sadness!"
     end
   end
 
 end
 
 my_tree = OrangeTree.new
-100.times do
+while true
+  my_tree.height
   my_tree.count_the_oranges
   my_tree.pick_an_orange
   my_tree.count_the_oranges
   my_tree.one_year_passes
-  my_tree.height
+  sleep(0.5)
 end
 
 

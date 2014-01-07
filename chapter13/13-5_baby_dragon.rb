@@ -1,5 +1,5 @@
 class Dragon
-  def initialize name
+  def initialize(name)
     @name = name
     @asleep = false
     @stuff_in_belly = 10 # He's full.

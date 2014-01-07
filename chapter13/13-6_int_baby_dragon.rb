@@ -1,5 +1,5 @@
 class Dragon
-  def initialize name
+  def initialize(name)
     @name = name
     @asleep = false
     @stuff_in_belly = 10 # He's full.
@@ -72,8 +72,8 @@ class Dragon
     def passage_of_time
       if @stuff_in_belly > 0
       # Move food from belly to intestine.
-      @stuff_in_belly = @stuff_in_belly - 1
-      @stuff_in_intestine = @stuff_in_intestine + 1
+      @stuff_in_belly -= 1
+      @stuff_in_intestine += 1
       else # Our dragon is starving!
         if @asleep
           @asleep = false
