@@ -1,3 +1,6 @@
+# The core code here is copied from the book, as suggested.
+#   However, I've expanded the code up to millions.
+
 def english_number number
   if number < 0 
     return 'Please enter a number that isn\'t negative.'

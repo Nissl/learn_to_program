@@ -10,27 +10,17 @@ def make_list
   end
 end
 
-# Feels like an ugly hack right now, but I'm trying to stick to methods
-# the book has taught. I'll revisit this...
+# Still feel like this could be shorter, not sure how.
 def sort_list(word_list)
   sorted_list = []
-  word_list.length.times do
+  while word_list.length > 0
     small_word = word_list[0]
-    loc = 0
-    (0..word_list.length - 1).each do |i|
-      if word_list[i] <= small_word
-        small_word = word_list[i]
-        loc = i
+    word_list.each do |word|
+      if word < small_word
+        small_word = word
       end
     end
-    sorted_list.push(small_word)
-    new_list = []
-    (0..word_list.length - 1).each do |i|
-      if i != loc
-        new_list.push(word_list[i])
-      end
-    end
-    word_list = new_list
+    sorted_list << word_list.slice!(word_list.index(small_word))
   end
   return sorted_list
 end

@@ -29,23 +29,15 @@ def make_list
   end
 end
 
-def shuffle word_list 
+def shuffle(word_list) 
   return recursive_shuffle(word_list, [])
 end
 
-def recursive_shuffle word_list, shuffled_list
+def recursive_shuffle(word_list, shuffled_list)
   if word_list.length == 0
     return shuffled_list
   else
-    loc = rand(word_list.length)
-    shuffled_list.push(word_list[loc])
-    new_list = []
-    (0..word_list.length - 1).each do |i|
-      if i != loc
-        new_list.push(word_list[i])
-      end
-    end
-    word_list = new_list
+    shuffled_list << word_list.slice!(rand(word_list.length))
     return recursive_shuffle word_list, shuffled_list 
   end
 end
@@ -55,8 +47,15 @@ puts "Come one, come all, see the amazing John\'s shuffling program!"
 puts "Enter words you would like the program to shuffle. Press enter on a blank line"
 puts "when finished."
 
-word_list = make_list
-shuffled_list = shuffle word_list
+20.times do
+  word_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+  shuffled_list = shuffle(word_list)
+  puts "Here's the shuffled list! Magnificent!"
+  puts shuffled_list
+end
 
-puts "Here\'s the shuffled list!"
-puts [shuffled_list]
+# word_list = make_list
+# shuffled_list = shuffle(word_list)
+
+# puts "Here\'s the shuffled list!"
+# puts [shuffled_list]

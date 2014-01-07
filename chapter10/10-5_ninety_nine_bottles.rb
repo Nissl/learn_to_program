@@ -81,11 +81,11 @@ end
 
 
 def drink_bottle bottle_num
-  puts (english_number(bottle_num).capitalize + " bottles of beer on the wall, "  + 
-         english_number(bottle_num) + " bottles of beer! ")
+  puts ("#{english_number(bottle_num).capitalize} bottles of beer on the wall, \
+        #{english_number(bottle_num)} bottles of beer!")
   bottle_num -= 1
-  puts ("Take one down, pass it around! " + english_number(bottle_num).capitalize +
-         " bottles of beer on the wall!")
+  puts ("Take one down, pass it around! \
+      #{english_number(bottle_num).capitalize} bottle of beer on the wall!")
   puts
   return bottle_num
 end
@@ -96,14 +96,14 @@ while bottle_num > 2
 end
 
 # need to pull out the last two to make the plural nouns work right.
-puts (english_number(bottle_num).capitalize + " bottles of beer on the wall, "  + 
-         english_number(bottle_num) + " bottles of beer! ")
+puts ("#{english_number(bottle_num).capitalize} bottles of beer on the wall, \
+      #{english_number(bottle_num)} bottles of beer!")
 bottle_num -= 1
-puts ("Take one down, pass it around! " + english_number(bottle_num).capitalize +
-         " bottle of beer on the wall!")
+puts ("Take one down, pass it around! \
+      #{english_number(bottle_num).capitalize} bottle of beer on the wall!")
 puts
-puts (english_number(bottle_num).capitalize + " bottle of beer on the wall, "  + 
-         english_number(bottle_num) + " bottle of beer! ")
+puts ("#{english_number(bottle_num).capitalize} bottle of beer on the wall, \  
+      #{english_number(bottle_num)} bottle of beer!")
 puts "Take one down, pass it around! No more bottles of beer on the wall!"
 puts
 puts "I'm so drunk! How did this happen!?"

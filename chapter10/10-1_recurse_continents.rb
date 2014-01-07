@@ -1,18 +1,20 @@
+# Codebase copied from the book and modfied so "explorers" don't fall off the 
+#   world. Continent modified to test this behavior.
 M = 'land'
 o = 'water'
-world = [[o,o,o,o,o,o,o,o,o,o,o],
-         [o,o,o,o,M,M,o,o,o,o,o],
-         [o,o,o,o,o,o,o,o,M,M,o],
-         [o,o,o,M,o,o,o,o,o,M,o],
-         [o,o,o,M,o,M,M,o,o,o,o],
+world = [[o,o,o,o,o,o,M,o,o,o,o],
+         [o,o,o,o,M,M,M,o,o,o,o],
+         [o,o,o,o,o,o,M,o,M,M,o],
+         [o,o,M,M,o,o,M,o,o,M,o],
+         [o,o,o,o,o,M,M,o,o,o,o],
          [o,o,o,o,M,M,M,M,o,o,o],
-         [o,o,o,M,M,M,M,M,M,M,o],
+         [M,M,M,M,M,M,M,M,M,M,M],
          [o,o,o,M,M,o,M,M,M,o,o],
          [o,o,o,o,o,o,M,M,o,o,o],
-         [o,M,o,o,o,M,o,o,o,o,o],
-         [o,o,o,o,o,o,o,o,o,o,o]]
+         [o,M,o,o,o,M,M,o,o,o,o],
+         [o,o,o,o,o,o,M,o,o,o,o]]
 
-def continent_size world, x, y
+def continent_size(world, x, y)
   if(x < 0 || x > world[0].length - 1)
     return 0
   elsif (y < 0 || y > world.length - 1)
@@ -36,4 +38,4 @@ def continent_size world, x, y
   end
 end
 
-puts continent_size(world, 4, 1)
+puts continent_size(world, 5, 5)

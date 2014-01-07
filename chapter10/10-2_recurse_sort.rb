@@ -10,30 +10,21 @@ def make_list
   end
 end
 
-def sort word_list
+def sort(word_list)
   return recursive_sort(word_list, [])
 end
 
-def recursive_sort word_list, sorted_list
+def recursive_sort(word_list, sorted_list)
   if word_list.length == 0
     return sorted_list
   else
     small_word = word_list[0]
-    loc = 0
-    (0..word_list.length - 1).each do |i|
-      if word_list[i] <= small_word
-        small_word = word_list[i]
-        loc = i
+    word_list.each do |word|
+      if word < small_word
+        small_word = word
       end
     end
-    sorted_list.push(small_word)
-    new_list = []
-    (0..word_list.length - 1).each do |i|
-      if i != loc
-        new_list.push(word_list[i])
-      end
-    end
-    word_list = new_list
+    sorted_list << word_list.slice!(word_list.index(small_word))
     return recursive_sort word_list, sorted_list 
   end
 end
@@ -45,7 +36,7 @@ puts "Enter words you would like the program to sort. Press enter on a blank lin
 puts "when finished."
 
 word_list = make_list
-sorted_list = sort word_list
+sorted_list = sort(word_list)
 
 puts "Here\'s the sorted list! Magnificent!"
 puts [sorted_list]

@@ -1,3 +1,6 @@
+# Refactored after seeing a better solution than passing
+#   caps info along with each word in one of the student
+#   repositories that was getting complements.
 def make_list
   word_list = []
   while true
@@ -5,54 +8,33 @@ def make_list
     if input.length == 0
       return word_list
     else
-      cap = 0
-      if input == input.capitalize
-        cap = 1
-      end
-      input.downcase!
-      word_list.push([input, cap])
+      word_list << input
     end
   end
 end
 
-def sort word_list
+def sort(word_list)
   return recursive_sort(word_list, [])
 end
 
-def recursive_sort word_list, sorted_list
+def recursive_sort(word_list, sorted_list)
   if word_list.length == 0
     return sorted_list
   else
-    small_word = word_list[0][0]
-    loc = 0
-    (0..word_list.length - 1).each do |i|
-      if word_list[i][0] <= small_word
-        small_word = word_list[i][0]
-        loc = i
+    small_word = word_list[0].downcase
+    word_list.each do |word|
+      if word.downcase < small_word.downcase
+        small_word = word
       end
     end
-    sorted_list.push([small_word, word_list[loc][1]])
-    new_list = []
-    (0..word_list.length - 1).each do |i|
-      if i != loc
-        new_list.push([word_list[i][0], word_list[i][1]])
-      end
+    if small_word.downcase == word_list[0].downcase
+      small_word = word_list[0]
     end
-    word_list = new_list
+    sorted_list << word_list.slice!(word_list.index(small_word))
     return recursive_sort word_list, sorted_list 
   end
 end
 
-def re_capitalize sorted_list
-  dict_list = []
-  sorted_list.each do |word|
-    if word[1] == 1
-      word[0].capitalize!
-    end
-    dict_list.push(word[0])
-  end
-  return dict_list
-end  
 
 puts "Come one, come all, see the amazing John\'s alphabetizing program!"
 puts "Now with an algorithm that doesn't just convert all of your words to downcase!"
@@ -60,8 +42,8 @@ puts "Enter words you would like the program to sort. Press enter on a blank lin
 puts "when finished."
 
 word_list = make_list
-sorted_list = sort word_list
-dict_list = re_capitalize sorted_list
+#word_list = ['Doggie', 'zed', 'Alpha', 'Omega', 'silly', 'wang', 'doodle', 'beta']
+sorted_list = sort(word_list)
 
 puts "Here\'s the sorted list! Magnificent!"
-puts [dict_list]
+puts [sorted_list]
