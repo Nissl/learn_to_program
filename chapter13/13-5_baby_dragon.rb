@@ -106,7 +106,7 @@ class Dragon
   end
 end
 
-pet = Dragon.new 'Norbert'
+pet = Dragon.new('Norbert')
 pet.feed
 pet.toss
 pet.walk

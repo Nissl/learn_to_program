@@ -1,4 +1,4 @@
-def do_self_importantly some_proc
+def do_self_importantly(some_proc)
   puts "Errbody just HOLD ON! I'm doing something..."
   some_proc.call
   puts "OK, everyone, I'm done. As you were."
@@ -12,16 +12,16 @@ say_goodbye = Proc.new do
   puts 'goodbye'
 end
 
-do_self_importantly say_hello
-do_self_importantly say_goodbye
+do_self_importantly(say_hello)
+do_self_importantly(say_goodbye)
 
-def maybe_do some_proc
+def maybe_do(some_proc)
   if rand(2) == 0
     some_proc.call
   end
 end
 
-def twice_do some_proc
+def twice_do(some_proc)
   some_proc.call
   some_proc.call
 end
@@ -45,7 +45,7 @@ end
 twice_do wink
 twice_do glance
 
-def do_until_false first_input, some_proc
+def do_until_false(first_input, some_proc)
   input = first_input
   output = first_input
 
