@@ -1,5 +1,3 @@
-
-
 def shuffle word_list 
   return recursive_shuffle(word_list, [])
 end

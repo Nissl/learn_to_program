@@ -16,4 +16,4 @@ end
 
 puts "Whose birthday do you want to know?"
 birthday_boy = gets.chomp
-puts "That person\'s birthday is" + bday_hash[birthday_boy]
+puts "That person\'s birthday is: " + bday_hash[birthday_boy]
