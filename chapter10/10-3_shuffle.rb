@@ -1,21 +1,20 @@
 # I am defining a good shuffle as one in which the order of words is 
-# determined purely randomly. This may occasionally result in a list returning
-# the same as input ordering, particularly if it's very short.
+#   determined purely randomly. This may occasionally result in a list 
+#   returning the same as input ordering, particularly if it's very short.
 
-# Shuffling was tested via the following code:
-#
-# word_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+# Shuffling was tested via the following code (several times:
 #
 # 20.times do
-#   shuffled_list = shuffle word_list
-#   puts "Here\'s the shuffled list! Magnificent!"
-#   puts [shuffled_list]
-#end
+#   word_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+#   shuffled_list = shuffle(word_list)
+#   puts "Here's the shuffled list! Magnificent!"
+#   puts shuffled_list
+# end
 
 # Followed by a visual inspection for random ordering.
 
-# The book might hint that there's some sort of automated test to run, but I'm not
-# sure what that might be.
+# The book might hint that there's some sort of automated test to run, but I'm 
+# not sure what that might be.
 
 def make_list
   word_list = []
@@ -47,15 +46,8 @@ puts "Come one, come all, see the amazing John\'s shuffling program!"
 puts "Enter words you would like the program to shuffle. Press enter on a blank line"
 puts "when finished."
 
-20.times do
-  word_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-  shuffled_list = shuffle(word_list)
-  puts "Here's the shuffled list! Magnificent!"
-  puts shuffled_list
-end
+word_list = make_list
+shuffled_list = shuffle(word_list)
 
-# word_list = make_list
-# shuffled_list = shuffle(word_list)
-
-# puts "Here\'s the shuffled list!"
-# puts [shuffled_list]
+puts "Here\'s the shuffled list!"
+puts [shuffled_list]

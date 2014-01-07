@@ -1,5 +1,5 @@
 # The core code here is copied from the book, as suggested.
-#   However, I've expanded the code up to millions.
+#   However, I've expanded the code up to millions & deleted comments.
 
 def english_number number
   if number < 0 
