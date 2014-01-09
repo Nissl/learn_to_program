@@ -46,10 +46,10 @@ def order_test(roman, array_rom, array_num, order_good, disallowed_list)
 end
 
 def disallow(i, array_rom, disallowed_list)
-  type = (i + 1) % 4
-  if type == 2
+  type = i % 4
+  if type == 1
     disallowed_list = disallowed_list + array_rom.slice(i, 4)
-  elsif type == 3 || type == 0
+  elsif type == 2 || type == 3
     disallowed_list = disallowed_list + array_rom.slice(i, 2)
   end
   disallowed_list
