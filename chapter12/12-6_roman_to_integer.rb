@@ -1,3 +1,5 @@
+require 'pry'
+
 def check_roman(roman, array_rom, array_num)
   roman_split = roman.split ''
   
@@ -14,7 +16,7 @@ def check_roman(roman, array_rom, array_num)
   # if all letters are valid, test their order
   if roman_ok_letter == roman_split.length
     order_good = order_test(roman, array_rom, array_num, order_good = true, 
-                           curr_val = 1_000_000)
+                           disallowed_list = [])
     if order_good == true
       return true
     end
@@ -23,37 +25,45 @@ def check_roman(roman, array_rom, array_num)
   end
 end
 
-def order_test(roman, array_rom, array_num, order_good, curr_val)
+def order_test(roman, array_rom, array_num, order_good, disallowed_list)
   if roman == ''
-    return order_good
+    return true
   else
-    slice2 = roman[0..1]
-    array_rom.each_with_index do |_, i|
-      if slice2 == array_rom[i]
-        roman.slice!(0..1)
-        new_val = array_num[i]
-        if new_val > curr_val
-          order_good = false
-        else
-          curr_val = new_val
+    [2, 1].each do |length|
+      rom_test = roman.slice(0, length)
+      array_rom.each_with_index do |_, i|
+        if rom_test == array_rom[i]
+          new_val = roman.slice!(0, length)
+          if !disallow_check(new_val, disallowed_list)
+            return false
+          end 
+          disallowed_list = disallow(i, array_rom, disallowed_list)
+          return order_test(roman, array_rom, array_num, order_good, disallowed_list)
         end
-        return order_test(roman, array_rom, array_num, order_good, curr_val)
-      end
-    end
-    slice1 = roman[0]
-    array_rom.each_with_index do |_, i|
-      if slice1 == array_rom[i]
-        roman.slice!(0)
-        new_val = array_num[i]
-        if new_val > curr_val
-          order_good = false
-        else
-          curr_val = new_val
-        end
-        return order_test(roman, array_rom, array_num, order_good, curr_val)
       end
     end
   end
+end
+
+def disallow(i, array_rom, disallowed_list)
+  type = (i + 1) % 4
+  if type == 2
+    disallowed_list = disallowed_list + array_rom.slice(i, 4)
+  elsif type == 3 || type == 0
+    disallowed_list = disallowed_list + array_rom.slice(i, 2)
+  end
+  disallowed_list
+end
+
+def disallow_check(new_val, disallowed_list)
+  if disallowed_list 
+    disallowed_list.each do |disallowed|
+      if new_val == disallowed
+        return false
+      end
+    end
+  end
+  true
 end
 
 def convert(int_out, input, array_num, array_rom)
