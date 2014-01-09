@@ -1,9 +1,13 @@
-require 'pry'
+def valid_roman?(roman, array_rom)
+  if (letters_ok?(roman, array_rom) && order_good?(roman, array_rom, 
+                                                   disallowed_list = []))
+    return true
+  end
+  return false
+end
 
-def check_roman(roman, array_rom, array_num)
+def letters_ok?(roman, array_rom)
   roman_split = roman.split ''
-  
-  # test there are no invalid letters
   roman_ok_letter = 0
   roman_split.each do |test_letter|
     array_rom.each do |rom_letter|
@@ -12,33 +16,27 @@ def check_roman(roman, array_rom, array_num)
       end
     end
   end
-
-  # if all letters are valid, test their order
   if roman_ok_letter == roman_split.length
-    order_good = order_test(roman, array_rom, array_num, order_good = true, 
-                           disallowed_list = [])
-    if order_good == true
-      return true
-    end
-  else
+    return true
+  else 
     return false
   end
 end
 
-def order_test(roman, array_rom, array_num, order_good, disallowed_list)
+def order_good?(roman, array_rom, disallowed_list)
   if roman == ''
     return true
   else
-    [2, 1].each do |length|
-      rom_test = roman.slice(0, length)
+    [2, 1].each do |slice_length|
+      rom_test = roman.slice(0, slice_length)
       array_rom.each_with_index do |_, i|
         if rom_test == array_rom[i]
-          new_val = roman.slice!(0, length)
+          new_val = roman.slice!(0, slice_length)
           if !disallow_check(new_val, disallowed_list)
             return false
           end 
           disallowed_list = disallow(i, array_rom, disallowed_list)
-          return order_test(roman, array_rom, array_num, order_good, disallowed_list)
+          return order_good?(roman, array_rom, disallowed_list)
         end
       end
     end
@@ -46,17 +44,18 @@ def order_test(roman, array_rom, array_num, order_good, disallowed_list)
 end
 
 def disallow(i, array_rom, disallowed_list)
-  type = i % 4
   if i > 0
     priors = array_rom.slice(0..(i - 1))
   else
     priors = []
   end
+  
+  type = i % 4
   if type == 0
     disallowed_list = disallowed_list + priors
   elsif type == 1
     disallowed_list = disallowed_list + array_rom.slice(i, 4) + priors
-  elsif type == 2 || type == 3
+  else
     disallowed_list = disallowed_list + array_rom.slice(i, 2) + priors
   end
   disallowed_list
@@ -73,22 +72,19 @@ def disallow_check(new_val, disallowed_list)
   true
 end
 
-def convert(int_out, input, array_num, array_rom)
-  slice2 = input[0..1]
-  array_rom.each_with_index do |_, i|
-    if slice2 == array_rom[i]
-      input.slice!(0..1)
-      return convert(int_out + array_num[i], input, array_num, array_rom)
+def convert(input, array_num, array_rom, int_out)
+  if input == ""
+    return int_out
+  end
+  [2, 1].each do |slice_length|
+    input_slice = input.slice(0, slice_length)
+    array_rom.each_with_index do |_, i|
+      if input_slice == array_rom[i]
+        input.slice!(0, slice_length)
+        return convert(input, array_num, array_rom, int_out + array_num[i])
+      end
     end
   end
-  slice1 = input[0]
-  array_rom.each_with_index do |_, i|
-    if slice1 == array_rom[i]
-      input.slice!(0)
-      return convert(int_out + array_num[i], input, array_num, array_rom)
-    end
-  end
-  return int_out
 end
 
 # Better design to make this a single nested array?
@@ -99,8 +95,8 @@ puts "Input Roman numerals to convert to modern number"
 input = gets.chomp.to_s.upcase
 roman = String.new(input)
 
-if check_roman(roman, array_rom, array_num)
-  int_out = convert(0, input, array_num, array_rom)
+if valid_roman?(roman, array_rom)
+  int_out = convert(input, array_num, array_rom, int_out = 0)
   puts "Converted result: " + int_out.to_s
 else
   puts "Sorry, friend, that's not a valid roman number."
