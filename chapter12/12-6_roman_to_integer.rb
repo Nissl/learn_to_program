@@ -47,10 +47,17 @@ end
 
 def disallow(i, array_rom, disallowed_list)
   type = i % 4
-  if type == 1
-    disallowed_list = disallowed_list + array_rom.slice(i, 4)
+  if i > 0
+    priors = array_rom.slice(0..(i - 1))
+  else
+    priors = []
+  end
+  if type == 0
+    disallowed_list = disallowed_list + priors
+  elsif type == 1
+    disallowed_list = disallowed_list + array_rom.slice(i, 4) + priors
   elsif type == 2 || type == 3
-    disallowed_list = disallowed_list + array_rom.slice(i, 2)
+    disallowed_list = disallowed_list + array_rom.slice(i, 2) + priors
   end
   disallowed_list
 end
